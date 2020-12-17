@@ -19,7 +19,15 @@ function getFormSubmit(event) {
     event.target.reset();
     if (inputValue.length > 1) {
         page = 1;
-        fetchImages(inputValue, page, API_KEY).then(img => { addImg(img); page += 1; refs.button.classList.toggle('show'); });
+        fetchImages(inputValue, page, API_KEY)
+            .then(img => {
+                if (img.length > 0) {
+                    addImg(img);
+                    page += 1;
+                    refs.button.classList.toggle('show');
+                } else { alert('Not Found!');};
+                
+            }).catch(err => console.log('Error:', err));
         
     };
     
