@@ -19,16 +19,15 @@ function getFormSubmit(event) {
     event.target.reset();
     if (inputValue.length > 1) {
         page = 1;
-        fetchImages(inputValue, page, API_KEY)
-            .then(img => {
-                addImg(img);
-                page += 1
-            });
+        fetchImages(inputValue, page, API_KEY).then(img => { addImg(img); page += 1; refs.button.classList.toggle('show'); });
+        
     };
     
 }
 
 refs.button.addEventListener('click', loadImg);
+
+
 
 function loadImg() {
 
@@ -39,8 +38,7 @@ function loadImg() {
             window.scrollTo({
                 top: document.documentElement.offsetHeight - 2935,
                 behavior: 'smooth'
-            });
+            });  
+        }).catch(err => console.log('Error:', err));
 
-        })
-        .catch(err => console.log('Error:', err));
 }

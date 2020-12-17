@@ -38,6 +38,10 @@ button {
 }
 
 button.load {
+  display: none;
+}
+
+button.show {
   display: block;
 }
 
