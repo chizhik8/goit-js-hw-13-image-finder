@@ -21,11 +21,15 @@ function getFormSubmit(event) {
         page = 1;
         fetchImages(inputValue, page, API_KEY)
             .then(img => {
-                if (img.length > 0) {
+                if (img.length) {
                     addImg(img);
                     page += 1;
-                    refs.button.classList.toggle('show');
-                } else { alert('Not Found!');};
+                    // refs.button.className = 'show';
+                    refs.button.style.display = 'block'
+                } else {
+                    refs.button.style.display = 'none';
+                    alert('Not Found!');
+                };
                 
             }).catch(err => console.log('Error:', err));
         
